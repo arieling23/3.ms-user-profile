@@ -37,4 +37,4 @@ jobs:
           docker pull arieling/ms-user-profile
           docker stop ms-user-profile || true
           docker rm ms-user-profile || true
-          docker run -d --name ms-user-profile -p 3002:3002 --env-file .env arieling/ms-user-profile
+          docker run -d --name ms-user-profile -p 3003:3003 --env-file .env arieling/ms-user-profile
