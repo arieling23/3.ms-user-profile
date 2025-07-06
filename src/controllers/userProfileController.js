@@ -61,7 +61,7 @@ const updateProfile = async (req, res) => {
     if (req.body.bio !== undefined) profile.bio = req.body.bio;
     if (req.body.phone !== undefined) profile.phone = req.body.phone;
 
-    await profile.save(); // 👉 Guardar cambios
+    await profile.save(); //  Guardar cambios
     console.log('✅ Perfil actualizado:', profile);
 
     res.json(profile);
