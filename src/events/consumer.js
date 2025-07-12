@@ -5,7 +5,7 @@ async function startUserRegisteredConsumer() {
   const connection = await amqp.connect(process.env.RABBITMQ_URL);
   const channel = await connection.createChannel();
 
-  // Asegúrate de declarar el exchange ‘user’ como topic
+  // Asegúrate de declarar el exchange user como topic
   await channel.assertExchange('user', 'topic', { durable: true });
 
   //2Declara y vincula la cola
@@ -15,7 +15,7 @@ async function startUserRegisteredConsumer() {
 
   console.log('📥 [PROFILE] Escuchando en cola', queue);
 
-  // 3️⃣ Aquí va tu consume
+  
   channel.consume(queue, async (msg) => {
     if (!msg) return;
     const event = JSON.parse(msg.content.toString());
