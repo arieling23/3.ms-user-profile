@@ -3,9 +3,9 @@ require('dotenv').config(); // Carga variables de entorno
 
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/database'); // Renombrado a database.js por claridad
-const profileRoutes = require('./routes/userProfileRoutes'); // ✅ Cambiado desde preferencesRoutes
-const { startUserRegisteredConsumer } = require('./events/consumer'); // ✅ Si usas RabbitMQ
+const connectDB = require('./config/database'); 
+const profileRoutes = require('./routes/userProfileRoutes'); 
+const { startUserRegisteredConsumer } = require('./events/consumer'); 
 
 const app = express();
 
