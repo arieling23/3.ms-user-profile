@@ -1,4 +1,4 @@
-// controllers/userProfileController.js
+
 const UserProfile = require('../models/UserProfile');
 
 // Obtener perfil del usuario autenticado
@@ -46,7 +46,7 @@ const createProfile = async (req, res) => {
   }
 };
 
-// ✅ CORREGIDO: Actualizar perfil
+// Actualizar perfil
 const updateProfile = async (req, res) => {
   try {
     console.log('🔧 Actualizando perfil:', req.body);
