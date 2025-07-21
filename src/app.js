@@ -1,5 +1,5 @@
-// app.js
-require('dotenv').config(); // Carga variables de entorno
+
+require('dotenv').config(); 
 
 const express = require('express');
 const cors = require('cors');
@@ -9,7 +9,7 @@ const { startUserRegisteredConsumer } = require('./events/consumer');
 
 const app = express();
 
-// Configuración CORS desde variable de entorno
+
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || 'http://54.225.75.133:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -21,32 +21,32 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Conexión a MongoDB
+
 connectDB();
 
-// Rutas protegidas (todas las rutas en userProfileRoutes ya usan verifyJWT)
-app.use('/api/profiles', profileRoutes); // ✅ Ruta base clara
 
-// Ruta raíz de prueba
+app.use('/api/profiles', profileRoutes);
+
+
 app.get('/', (_, res) => res.send('✅ ms-user-profile activo'));
 
-// Ruta no encontrada
+
 app.use((req, res) => {
   res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
-// Manejador global de errores
+
 app.use((err, req, res, next) => {
   console.error('❌ Error general:', err);
   res.status(500).json({ message: 'Error interno del servidor' });
 });
 
-// Iniciar servidor
+
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, async () => {
   console.log(`🚀 Servidor ms-user-profile corriendo en puerto ${PORT}`);
 
-  // Arrancar el consumer de eventos si aplica
+  
   try {
     await startUserRegisteredConsumer();
     console.log('📥 Consumer user.registered iniciado');

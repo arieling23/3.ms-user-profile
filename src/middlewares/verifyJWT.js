@@ -19,7 +19,7 @@ const verifyJWT = (req, res, next) => {
       name: decoded.name,
     };
 
-    console.log('🔍 req.user:', req.user); // 👈 Este log te mostrará la info
+    console.log('🔍 req.user:', req.user); 
 
     next();
   } catch (err) {

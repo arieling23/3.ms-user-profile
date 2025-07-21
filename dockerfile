@@ -1,4 +1,4 @@
-# Dockerfile - ms-auth
+
 FROM node:18
 
 WORKDIR /app

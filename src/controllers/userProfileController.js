@@ -1,7 +1,7 @@
 
 const UserProfile = require('../models/UserProfile');
 
-// Obtener perfil del usuario autenticado
+
 const getProfile = async (req, res) => {
   try {
     console.log('🟡 [GET PROFILE] req.user:', req.user);
@@ -20,7 +20,6 @@ const getProfile = async (req, res) => {
   }
 };
 
-// Crear perfil (sólo si no existe)
 const createProfile = async (req, res) => {
   try {
     console.log('🔍 req.user:', req.user);
@@ -46,7 +45,7 @@ const createProfile = async (req, res) => {
   }
 };
 
-// Actualizar perfil
+
 const updateProfile = async (req, res) => {
   try {
     console.log('🔧 Actualizando perfil:', req.body);
@@ -57,11 +56,10 @@ const updateProfile = async (req, res) => {
       return res.status(404).json({ message: 'Perfil no encontrado' });
     }
 
-    // Actualizar solo los campos permitidos
     if (req.body.bio !== undefined) profile.bio = req.body.bio;
     if (req.body.phone !== undefined) profile.phone = req.body.phone;
 
-    await profile.save(); //  Guardar cambios
+    await profile.save(); 
     console.log('✅ Perfil actualizado:', profile);
 
     res.json(profile);

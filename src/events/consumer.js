@@ -5,10 +5,10 @@ async function startUserRegisteredConsumer() {
   const connection = await amqp.connect(process.env.RABBITMQ_URL);
   const channel = await connection.createChannel();
 
-  // Asegúrate de declarar el exchange user como topic
+  
   await channel.assertExchange('user', 'topic', { durable: true });
 
-  //2Declara y vincula la cola
+
   const queue = 'user.registered.profile';
   await channel.assertQueue(queue, { durable: true });
   await channel.bindQueue(queue, 'user', 'user.registered');

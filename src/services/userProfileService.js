@@ -1,7 +1,7 @@
 const UserProfile = require('../models/UserProfile');
 const { logInfo, logError } = require('../utils/logger');
 
-// Crear nuevo perfil
+
 async function createProfile(data) {
   const { userId, name, email, bio } = data;
 
@@ -21,7 +21,7 @@ async function createProfile(data) {
   return profile;
 }
 
-// Obtener perfil
+
 async function getProfileByUserId(userId) {
   const profile = await UserProfile.findOne({ userId });
   if (!profile) {
@@ -32,7 +32,7 @@ async function getProfileByUserId(userId) {
   return profile;
 }
 
-// Actualizar perfil
+
 async function updateProfile(userId, updates) {
   const updatedProfile = await UserProfile.findOneAndUpdate(
     { userId },
